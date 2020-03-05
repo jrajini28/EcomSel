@@ -12,4 +12,12 @@ public class HomePageTest
 		System.out.print("first test case");
 		Assert.assertEquals(true, true);
 	}
+	
+	@Test
+	public void Test2()
+	{
+		System.out.print("seconds test case");
+		Assert.assertEquals(true, false);
+	}
+	
 }
