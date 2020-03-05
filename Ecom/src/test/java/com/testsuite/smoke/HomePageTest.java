@@ -27,5 +27,12 @@ public class HomePageTest
 		Assert.assertEquals(true, true);
 	}
 	
+	@Test
+	public void Test4()
+	{
+		System.out.print("seconds test case");
+		Assert.assertEquals(true, true);
+	}
+	
 	
 }
