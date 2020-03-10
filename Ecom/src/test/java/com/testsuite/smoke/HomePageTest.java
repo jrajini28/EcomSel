@@ -1,38 +1,49 @@
 package com.testsuite.smoke;
 
-import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 public class HomePageTest 
 {
+	WebDriver driver;
+	
+	//@BeforeClass
+	public void setUp()
+	{
+		System.setProperty("webdriver.chrome.driver", "chromedriver");
+		driver=new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.get("https://phptravels.net");
+	}
 
-	@Test
-	public void Test1()
+	//@BeforeMethod
+	public void selectcurrenyAndValidateisSetToTheSelectedCurreny()
 	{
-		System.out.print("first test case");
+		driver.findElement(By.id("dropdownCurrency")).click();
+		WebElement dropDown = driver.findElement(By.id("dropdownCurrency"));
+		Select mySelect = new Select(dropDown);
+		mySelect.selectByVisibleText("INR");
+		
+		
+	}
+	
+	@Test
+	public void signUp()
+	{
 		Assert.assertEquals(true, true);
 	}
 	
-	@Test
-	public void Test2()
-	{
-		System.out.print("seconds test case");
-		Assert.assertEquals(false, false);
-	}
-	
-	@Test
-	public void Test3()
-	{
-		System.out.print("seconds test case");
-		Assert.assertEquals(true, true);
-	}
-	
-	@Test
-	public void Test4()
-	{
-		System.out.print("seconds test case");
-		Assert.assertEquals(true, true);
-	}
-	
-	
+		
 }
